@@ -1,0 +1,86 @@
+.column {
+    float: left;
+    width: 50%;
+    padding: 10px;
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  .mb-3 {
+    margin-bottom: 1rem; /* Adjust as needed */
+  }
+  .column1 {
+    float: left;
+    width: 33.33%;
+    padding: 10px;
+  }
+  
+  /* Clear floats after the columns */
+  .row:after1 {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  .customfield{
+    width: 50%;
+    float: left;
+    padding-right: 15px;
+    padding-left: 15px;
+    box-sizing: border-box; /* Ensures padding doesn't affect width */
+  }
+  .custom-12 {
+    width: 100%;
+    float: left;
+    padding-right: 15px;
+    padding-left: 15px;
+    box-sizing: border-box; /* Ensures padding doesn't affect width */
+  }
+ 
+  
+  .custom-4 {
+    width: 33.33%;
+    float: left;
+    padding-right: 15px;
+    padding-left: 15px;
+    box-sizing: border-box; /* Ensures padding doesn't affect width */
+  }
+  div {
+    margin-bottom: 0px; /* Adjust as needed */
+}
+
+table {
+    margin-top: 0; /* Reset margin to remove any default margin */
+}
+.row1 {
+  margin-bottom: 0px; /* Adjust as needed */
+}
+
+/* Optional: Reset margin for the last row if there shouldn't be space after it */
+.row1:last-child {
+  margin-bottom: 0;
+}
+
+.column1 {
+  margin-bottom: 0px; /* Adjust as needed */
+}
+.Add {
+  background-color: #007bff;
+  color: #fff;
+  border: 1px solid #007bff;
+  padding: 0.5rem 1rem;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1rem;
+  cursor: pointer;
+}
+.btn-hover {
+  background-color: #0069d9;
+  border-color: #0062cc;
+  color: #fff;
+}

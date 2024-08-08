@@ -1,0 +1,33 @@
+<nav class="navbar navbar-expand-sm bg-success navbar-dark">
+   <a href="navbar-brand" href="#">Angular Project</a>
+ <!-- <button class="navbar-toggle" data-toggle ="collapse" data-target="#mynav">
+      <span class="navbar-toggle-icon"></span>
+  </button> -->
+
+<div class="collapse navbar-collapse" id="mynav">
+  <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+          <a class="nav-link" routerLink="dashboard">Dashboard</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" routerLink="about">About</a>
+      </li>
+  </ul>
+<form class="form-inline-right my-2 my-lg-0">
+  <div class="input-group">
+      <div class="input-group-prepend">
+          <!-- <span class="input-group-text" id="search">
+              <i class="bi bi-search"></i>
+          </span> -->
+      </div>
+      <input type="text" class="form-control" placeholder="search">
+      <button class="btn btn-warning my2-my-sm-0" type="button">search</button>
+
+  </div>
+</form>
+</div>
+</nav>
+
+<div class="container-fluid">
+  <router-outlet></router-outlet>
+</div>

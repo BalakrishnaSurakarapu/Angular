@@ -1,0 +1,123 @@
+<form [formGroup]="companyRegistrationForm" (ngSubmit)="onSubmit()">
+    <h2>Company Registration Form</h2>
+    <div>
+    <div class="row custom-12">
+        <div class="column customfield mb-3">
+            <label for="companyname">Company Name</label>
+            <input type="text" class="form-control" id="companyname" formControlName="companyname">
+        </div>
+        <div class="column customfield mb-3">
+            <label for="companyregistrationno">Company Registration No</label>
+            <input type="text" class="form-control" id="companyregistrationno" formControlName="companyregistrationno">
+        </div>
+    </div>
+    <h3>Company Address</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>House No</th>
+                <th>Street</th>
+                <th>Landmark</th>
+                <th>City</th>
+                <th>State</th>
+                <th>Country</th>
+                <th>ZIP Code</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody formArrayName="addresses">
+            <!-- <tr>
+                <td><input formControlName="type" type="text"></td>
+                <td><input formControlName="houseNo" type="text"></td>
+                <td><input formControlName="street" type="text"></td>
+                <td><input formControlName="landmark" type="text"></td>
+                <td><input formControlName="city" type="text"></td>
+                <td><input formControlName="state" type="text"></td>
+                <td><input formControlName="country" type="text"></td>
+                <td><input formControlName="zipCode" type="text"></td>
+            </tr>       -->
+
+        
+            <tr *ngFor="let address of addresses.controls; let i = index" [formGroupName]="i">
+                <td><input formControlName="type" type="text"></td>
+                <td><input formControlName="houseNo" type="text"></td>
+                <td><input formControlName="street" type="text"></td>
+                <td><input formControlName="landmark" type="text"></td>
+                <td><input formControlName="city" type="text"></td>
+                <td><input formControlName="state" type="text"></td>
+                <td><input formControlName="country" type="text"></td>
+                <td><input formControlName="zipCode" type="text"></td>
+                <td><button type="button" (click)="removeAddress(i)" *ngIf="addresses.length > 1">Remove</button></td>
+            </tr>
+        </tbody>
+
+        <button type="button" (click)="addAddress()">Add Another Address</button>
+
+    </table>
+    <h3>Hr Details</h3>
+    <div class="row1 custom-12">
+        <div class="column1 custom-4">
+            <label for="firstname">First Name</label>
+            <input type="text" class="form-control" id="firstname" formControlName="firstname">
+        </div>
+        <div class="column1 custom-4">
+            <label for="middlename">Middle Name</label>
+            <input type="text" class="form-control" id="middlename" formControlName="middlename">
+        </div>
+        <div class="column1 custom-4">
+            <label for="lastname">Last Name</label>
+            <input type="text" class="form-control" id="lastname" formControlName="lastname">
+        </div>        
+    </div>
+    <div class="row1 custom-12">
+        <div class="column1 custom-4">
+            <label for="username">User Name</label>
+            <input type="text" class="form-control" id="username" formControlName="username">
+        </div>
+        <!-- <div class="column1 custom-4">
+            <label for="company">Gender</label>
+            <input type="text" class="form-control" id="gender" formControlName="gender">
+        </div> -->
+        <div class="column1 custom-4">
+            <label for="gender">Gender</label>
+            <select class="form-control" id="gender" placeholder="Select" formControlName="gender">
+                <!-- <option>Male</option>
+                <option>Female</option>
+                <option>Other</option> -->
+              <option *ngFor="let option of genderOptions" [value]="option">{{ option }}</option>
+            </select>
+          </div>
+        <div class="column1 custom-4">
+            <label for="dob">Date of Birth</label>
+            <input type="date" class="form-control" placeholder="DD-MM-YYYY" id="dob" formControlName="dob">
+        </div>
+    </div>
+    <div class="row1 custom-12">
+        <div class="column1 custom-4">
+             <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" formControlName="email">
+         </div>
+         <div formArrayName="emails">
+            <div *ngFor="let email of emails.controls; let i = index" [formGroupName]="i">
+                <label>Email {{ i + 1 }}</label>
+                <div class="input-group">
+                    <input type="email" class="form-control" formControlName="email">
+                    <div class="input-group-append">
+                        <button type="button" class="btn btn-outline-danger" (click)="removeEmail(i)">
+                            Remove
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="column1 custom-4">
+            <button type="button" class="Add mt-3" (click)="addEmail()">Add Another Email</button>
+        </div>
+        <div class="column1 custom-4">
+            <button type="submit" class="btn-hover mt-3" >Submit</button>
+        </div>          
+    </div>  
+</div> 
+</form>
+
