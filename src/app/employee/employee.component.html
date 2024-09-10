@@ -1,0 +1,104 @@
+<div class="container">
+    <div class="heading">
+      <h3>Register New Employee</h3>
+    </div>
+    <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+      <div class="form-container">
+        <div class="form-row">
+          <div class="form-group flex-item">
+            <label for="employeeId">Employee ID </label>
+            <input id="employeeId" formControlName="employeeId" class="form-control" placeholder="Enter Employee ID" readonly/>
+            <!-- <div *ngIf="employeeForm.get('employeeId')?.invalid && employeeForm.get('employeeId')?.touched"
+              class="error-message">
+              Employee ID is required.
+            </div> -->
+          </div>
+          <div class="form-group flex-item">
+            <label for="employeeName">Employee Name <sup class="error-message">*</sup></label>
+            <input id="employeeName" formControlName="employeeName" class="form-control"
+              placeholder="Enter Employee Name" />
+            <div *ngIf="employeeForm.get('employeeName')?.invalid && employeeForm.get('employeeName')?.touched"
+              class="error-message">
+              Employee Name is required.
+            </div>
+          </div>
+          <div class="form-group flex-item">
+            <label for="department">Department <sup class="error-message">*</sup></label>
+            <input id="department" formControlName="department" class="form-control" placeholder="Enter Department" />
+            <div *ngIf="employeeForm.get('department')?.invalid && employeeForm.get('department')?.touched"
+              class="error-message">
+              Department is required.
+            </div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group flex-item">
+            <label for="designation">Designation <sup class="error-message">*</sup></label>
+            <input id="designation" formControlName="designation" class="form-control" placeholder="Enter Designation" />
+            <div *ngIf="employeeForm.get('designation')?.invalid && employeeForm.get('designation')?.touched"
+              class="error-message">
+              Designation is required.
+            </div>
+          </div>
+          <div class="form-group flex-item">
+            <label for="contactNumber">Contact Number <sup class="error-message">*</sup></label>
+            <input id="contactNumber" formControlName="contactNumber" class="form-control"
+              placeholder="Enter Contact Number" />
+            <div *ngIf="employeeForm.get('contactNumber')?.invalid && employeeForm.get('contactNumber')?.touched"
+              class="error-message">
+              Contact Number must be 10 digits.
+            </div>
+          </div>
+          <div class="form-group flex-item">
+            <label for="dateOfJoin">Date of Join <sup class="error-message">*</sup></label>
+            <input id="dateOfJoin" formControlName="dateOfJoin" type="date" class="form-control" />
+            <div *ngIf="employeeForm.get('dateOfJoin')?.invalid && employeeForm.get('dateOfJoin')?.touched"
+              class="error-message">
+              Date of Join is required.
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary">{{ this.employeeForm.value.employeeId ? 'Update' : 'Add' }}
+              Employee</button>
+  
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="container">
+    <div class="heading">
+      <h3>Employee List</h3>
+    </div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Department</th>
+          <th>Designation</th>
+          <th>Contact Number</th>
+          <th>Date of Join</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let employee of employees">
+          <td>{{employee.employeeId}}</td>
+          <td>{{employee.employeeName}}</td>
+          <td>{{employee.department}}</td>
+          <td>{{employee.designation}}</td>
+          <td>{{employee.contactNumber}}</td>
+          <td>{{employee.dateOfJoin}}</td>
+          <td><button type="button" (click)="editEmployee(employee)" class="btn btn-secondary">Edit</button>
+          </td>
+          <td>
+            <button type="button" (click)="deleteEmployee(employee.employeeId)" class="btn btn-danger">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

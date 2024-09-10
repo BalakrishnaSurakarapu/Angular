@@ -1,0 +1,196 @@
+<form class="container" [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+    <div class="col-mt-6">
+        <h2>Company Registration Form <span class="heart">🤍</span></h2>
+
+        <div class="form-row">
+            <label>
+                Company Name:
+                <input formControlName="companyName" type="text">
+            </label>
+
+            <label>
+                Company Registration No:
+                <input formControlName="companyRegistrationNo" type="text">
+            </label>
+        </div>
+
+
+    </div>
+    <h3>Company Addresses <span class="heart">🤍</span></h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>House No</th>
+                <th>Street</th>
+                <th>Landmark</th>
+                <th>City</th>
+                <th>State</th>
+                <th>Country</th>
+                <th>ZIP Code</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody formArrayName="addresses">
+            <tr *ngFor="let address of addresses.controls; let i = index" [formGroupName]="i">
+                <td><input formControlName="type" type="text"></td>
+                <td><input formControlName="houseNo" type="text"></td>
+                <td><input formControlName="street" type="text"></td>
+                <td><input formControlName="landmark" type="text"></td>
+                <td><input formControlName="city" type="text"></td>
+                <td><input formControlName="state" type="text"></td>
+                <td><input formControlName="country" type="text"></td>
+                <td><input formControlName="zipCode" type="text"></td>
+                <td><button type="button" (click)="removeAddress(i)" *ngIf="addresses.length > 1">Remove</button></td>
+            </tr>
+        </tbody>
+    </table>
+    <button type="button" (click)="addAddress()">Add Address</button>
+
+    <h3>HR DETAILS <span class="heart">🤍</span></h3>
+    <div formArrayName="hrDetails">
+        <div class="form-row">
+            <label>First Name: <input formControlName="firstName" type="text"></label>
+            <label>Middle Name: <input formControlName="middleName" type="text"></label>
+            <label>Last Name: <input formControlName="lastName" type="text"></label>
+        </div>
+        <div class="form-row">
+            <label>Gender:
+                <select formControlName="gender" class="form-control">
+                    <option value="">Select Gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select>
+                <!-- <input formControlName="gender" type="text"> -->
+            </label>
+            <label>Username: <input formControlName="username" type="text"></label>
+            <label>Date of Birth: <input formControlName="dob" type="date"></label>
+            <!-- <label>Email: <input formControlName="email" type="email"></label> -->
+
+            <!-- <button type="button" (click)="removeHrDetail(i)">Remove</button> -->
+        </div>
+    </div>
+    <!-- <button type="button" (click)="addHrDetail()">Add Another HR Detail</button> -->
+
+    <div formArrayName="emails">
+        <div class="form-row">
+            <div *ngFor="let email of emails.controls; let i = index" [formGroupName]="i">
+                <label>Email: <input formControlName="email" type="email"></label>
+                <button type="button" (click)="removeEmail(i)" *ngIf="emails.length > 1">Remove</button>
+            </div>
+        </div>
+    </div>
+    <button type="button" (click)="addEmail()">Add Another Email</button>
+
+    <button type="submit">Submit</button>
+
+
+
+</form>
+<div *ngIf="submittedData">
+    <h3>Submitted Form Data:</h3>
+    <h4>Company Info</h4>
+    <table border="1">
+        <tr>
+            <th>Field</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>Company Name</td>
+            <td>{{ submittedData.companyName }}</td>
+        </tr>
+        <tr>
+            <td>Company Registration No</td>
+            <td>{{ submittedData.companyRegistrationNo }}</td>
+        </tr>
+    </table>
+</div>
+<h4>Addresses</h4>
+<table border="1">
+    <thead>
+        <tr>
+            <th>Type</th>
+            <th>House No</th>
+            <th>Street</th>
+            <th>Landmark</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Country</th>
+            <th>ZIP Code</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let address of submittedData.addresses">
+            <td>{{ address.type }}</td>
+            <td>{{ address.houseNo }}</td>
+            <td>{{ address.street }}</td>
+            <td>{{ address.landmark }}</td>
+            <td>{{ address.city }}</td>
+            <td>{{ address.state }}</td>
+            <td>{{ address.country }}</td>
+            <td>{{ address.zipCode }}</td>
+        </tr>
+    </tbody>
+</table>
+<h3>HR Details</h3>
+<table>
+    <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Middle Name</th>
+            <th>Last Name</th>
+            <th>Gender</th>
+            <th>Username</th>
+            <th>Date of Birth</th>
+            <th>Email</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let hrDetail of submittedData.hrDetails">
+            <td>{{ hrDetail.firstName }}</td>
+            <td>{{ hrDetail.middleName }}</td>
+            <td>{{ hrDetail.lastName }}</td>
+            <td>{{ hrDetail.gender }}</td>
+            <td>{{ hrDetail.username }}</td>
+            <td>{{ hrDetail.dob }}</td>
+            <td>{{ hrDetail.email }}</td>
+        </tr>
+    </tbody>
+</table>
+
+<!-- <div id="container">
+    <div class="align-item-center">
+  
+    </div>
+    <div class="box">
+      <div> <img src="assets/image1.png" alt="" class="image">
+      </div>
+      <h1>Do you LogIn? <span class="heart">🤍</span></h1>
+      <button id="target" (click)="someMethod('No')">No</button>
+      <button id="yes" (click)="someMethod('Yes')">Yes</button>
+    </div>
+    <div class="hearts-container" *ngIf="showHearts">
+      <div class="heart" *ngFor="let heart of hearts; let i = index">
+        {{i}}
+      </div>
+    </div>
+  </div> -->
+
+<!-- <div id="container">
+    <div class="box">
+      <h1>Do you Love me? <img src="assets/image.png" alt="" class="image"></h1>
+      <button id="target" (click)="someMethod('No')">No</button>
+      <button id="yes" (click)="someMethod('Yes')">Yes</button>
+    </div>
+    
+    <div class="hearts-container" *ngIf="showHearts">
+      <div class="heart" *ngFor="let heart of hearts; let i = index">
+        {{i}}
+      </div>
+    </div>
+  
+    <div class="okay-container" *ngIf="showOkay">
+      <p>Okay</p>
+    </div>
+  </div> -->

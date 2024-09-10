@@ -1,0 +1,63 @@
+<div class="container">
+  <div class="heading">
+    <h3>Register New User</h3>
+  </div>
+  <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    <div class="form-container">
+      <div class="form-row">
+        <div class="form-group flex-item">
+          <label for="employeeId">User ID </label>
+          <input id="employeeId" formControlName="id" class="form-control" placeholder="Enter user ID" readonly/>
+        </div>
+        <div class="form-group flex-item">
+          <label for="employeeId">User Name </label>
+          <input id="employeeId" formControlName="name" class="form-control" placeholder="Enter user name" />
+          <div *ngIf="userForm.get('name')?.invalid && userForm.get('name')?.touched"
+            class="error-message">
+            username is required.
+          </div>
+        </div>
+        <div class="form-group flex-item">
+          <label for="employeeId">Email Id </label>
+          <input id="employeeId" formControlName="email" class="form-control" placeholder="Enter email ID" />
+          <div *ngIf="userForm.get('email')?.invalid && userForm.get('email')?.touched"
+            class="error-message">
+            emailid  is required.
+          </div>
+        </div>
+        </div>
+        <div class="form-group">
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary">{{ this.userForm.value.employeeId ? 'Update' : 'Add' }}
+              User</button>
+  
+          </div>
+        </div>
+
+<div class="container">
+  <div class="heading">
+    <h3>User List</h3>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+    
+        <tr *ngFor="let user of users; let i = index">
+            <td>{{ user.userId }}</td>
+            <td>{{ user.name }}</td>
+            <td>{{ user.email }}</td>
+          <td>
+            <button type="button" (click)="editUser(user)" class="btn btn-secondary">Edit</button>
+            <button type="button" (click)="deleteUser(user.userId)" class="btn btn-danger">Delete</button>
+          </td>
+      </tr>
+    </tbody>
+  </table>
+  

@@ -1,0 +1,66 @@
+<h1>observables</h1>
+
+<!-- {{studentData|json}} -->
+
+
+
+<button class="addBtn" (click)="showAddForm()">Add New Student</button>
+
+<div class="studenttbl">
+    <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Gender</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let student of studentData; let i = index">
+            <td>{{ student.id }}</td>
+            <td>{{ student.name }}</td>
+            <td>{{ student.email }}</td>
+            <td>{{ student.gender }}</td>
+            <td>
+              <button (click)="showEditForm(student)">Edit</button>
+              <button (click)="deleteStudent(i)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+</div>
+
+<div *ngIf="isAdding || isEditing">
+  <h3>{{ isEditing ? 'Edit Student' : 'Add Student' }}</h3>
+  <form (ngSubmit)="onSubmit()">
+    <label hidden>ID:
+      <input [(ngModel)]="currentStudent.id" name="id" [readonly]="isEditing" required hidden/>
+    </label>
+    <label>Name:
+      <input [(ngModel)]="currentStudent.name" name="name" required />
+    </label>
+    <label>Email:
+      <input [(ngModel)]="currentStudent.email" name="email" type="email" required />
+    </label>
+    <label>Gender:
+      <select [(ngModel)]="currentStudent.gender" name="gender" required>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+      </select>
+    </label>
+    <button type="submit">{{ isEditing ? 'Update' : 'Add' }}</button>
+    <button type="button" (click)="cancelEdit()">Cancel</button>
+  </form>
+</div>
+
+<div class="container">
+    <div class="side-panel">
+        <h1>side panel</h1>
+    </div>
+    <div class="header"><h2>header</h2></div>
+    <div className="body-section">body</div>
+    <div class="footer"><h3>Footer</h3></div>
+</div>  
+  

@@ -23,11 +23,11 @@ export class AboutComponent implements OnInit {
     });
   }
 
-  constructor(private formBuilder: FormBuilder) {debugger
+  constructor(private formBuilder: FormBuilder) {
     this.companyRegistrationForm = this.formBuilder.group({
       companyname:['',Validators.required],
       companyregistrationno:['',Validators.required],
-     // email: ['', Validators.required, Validators.email],
+      email: ['', Validators.required, Validators.email],
       addresses: this.formBuilder.array([this.createAddress()]),
       emails: this.formBuilder.array([this.createEmail()]),
       gender: ['', Validators.required],

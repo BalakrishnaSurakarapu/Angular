@@ -21,9 +21,52 @@ export class DashboardComponent implements OnInit {
   Years: number[] = [];
   TeamMembersSummary: any = [];
   TeamMembers: any = [];
+  str: string = 'balakrishna'
+  string123 = 'dddbsjakeldpgd'
+  //  reverse:string='';
+  //  charcount:string=''; maxchar:string='';maxcount:any
+  //   char: any;
+  arr = ['ggggg', '2222', 'hfdsasdd', '454333', '55']
 
-  ngOnInit()
-  {
+
+  ngOnInit() {
+    
+    console.log(this.arr.reverse(), 'ssssssssssssss')
+    // console.log(this.arr.duplicates(),'dulpicates')
+    const str = this.string123.split('');
+    const str1 = this.string123.split('').reverse();
+    const str2 = this.string123.split('').reverse().join('');
+    console.log(this.string123)
+    console.log(str)
+    console.log(str1)
+    console.log(str2)
+    //     this.reverse = this.str.split('').reverse().join('');
+    // console.log("reverse",this.reverse)
+
+    //     let char:string;
+    //   for(let char of this.str){
+    //     if(this.charcount[this.char]){
+    //       this.charcount[this.char ++];      
+    //     }else{
+    //       this.charcount[this.char=1];
+    //     }
+    //     console.log('charcount',this.charcount)
+
+    //   }
+    //   for(const[char,count]of Object.entries(this.charcount)){debugger
+    //     if(count > this.maxcount){
+    // this.maxchar=char;
+    // this.maxcount=count;
+    // console.log('maxcount', this.maxcount)
+    // console.log('maxchar',this.maxchar)
+    //     }
+    //     console.log('maxcount', this.maxcount)
+    //     console.log('maxchar',this.maxchar)
+    //   }
+
+
+
+
     this.Designation = 'Team Leader';
     this.Username = 'Balu';
     this.NoOfTeamMembers = 67;
@@ -42,8 +85,7 @@ export class DashboardComponent implements OnInit {
 
     this.Projects = ['Project A', 'Project B', 'Project C', 'Project D'];
 
-    for (var i = 2019; i >= 2010; i--)
-    {
+    for (var i = 2019; i >= 2010; i--) {
       this.Years.push(i);
     }
 
